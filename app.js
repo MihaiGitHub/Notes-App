@@ -16,5 +16,32 @@ yargs.command({
     }
 })
 
+// Remove command
+yargs.command({
+    command: 'remove',
+    describe: 'Remove a note',
+    handler: function () {
+        console.log('removing a note')
+    }
+})
+
+// Remove list
+yargs.command({
+    command: 'list',
+    describe: 'List all the notes',
+    handler: function () {
+        console.log('listing all the notes')
+    }
+})
+
+// Read command
+yargs.command({
+    command: 'read',
+    describe: 'Read a note',
+    handler: function () {
+        console.log('Reading all the notes')
+    }
+})
+
 // Can view commands that you have access to
 console.log(yargs.argv)
