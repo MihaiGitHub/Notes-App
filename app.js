@@ -11,8 +11,21 @@ yargs.version('1.1.0')
 yargs.command({
     command: 'add', // command name
     describe: 'Add a new note', // describe what the command is supposed to do
-    handler: function () { // function that gets executed when command gets used
-        console.log('adding a new note')
+    builder: { // additional arguments for this command to take
+        title: {
+            describe: 'Note title',
+            demandOption: true, // makes this argument (title) as required
+            type: 'string' // requires this argument to be a string
+        },
+        body: {
+            describe: 'Note body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) { // function that gets executed when command gets used
+        console.log('Title: ' + argv.title)
+        console.log('Body: ' + argv.body)
     }
 })
 
@@ -43,5 +56,8 @@ yargs.command({
     }
 })
 
+// goes through the process of parsing the arguments with all configuration details provided
+yargs.parse()
+
 // Can view commands that you have access to
-console.log(yargs.argv)
+//console.log(yargs.argv)
