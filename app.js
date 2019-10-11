@@ -1,7 +1,6 @@
-const getNotes = require('./notes.js')
 const chalk = require('chalk')
 const yargs = require('yargs')
-const command = process.argv[2]
+const notes = require('./notes.js')
 
 // Customize yargs version
 yargs.version('1.1.0')
@@ -24,8 +23,7 @@ yargs.command({
         }
     },
     handler: function (argv) { // function that gets executed when command gets used
-        console.log('Title: ' + argv.title)
-        console.log('Body: ' + argv.body)
+       notes.addNote(argv.title, argv.body)
     }
 })
 
