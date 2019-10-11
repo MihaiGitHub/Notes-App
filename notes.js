@@ -7,12 +7,25 @@ const getNotes = function () {
 const addNote = function (title, body) {
     const notes = loadNotes()
 
-    notes.push({
-        title: title,
-        body: body
+    // Create an array of values that match with title
+    // This function gets called 1 time for each note
+    // Array will have 0 items if no duplicates found
+    const duplicateNotes = notes.filter(function (note) {
+        // Return true if duplicate, false if not duplicate
+        return note.title === title
     })
 
-    saveNotes(notes)
+    if(duplicateNotes.length === 0){
+        notes.push({
+            title: title,
+            body: body
+        })
+    
+        saveNotes(notes)
+        console.log('New note added!')
+    } else {
+        console.log('Note title taken.')
+    }
 }
 
 // Save notes to file system
