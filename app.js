@@ -43,12 +43,12 @@ yargs.command({
     }
 })
 
-// Remove list
+// List all the notes
 yargs.command({
     command: 'list',
     describe: 'List all the notes',
     handler() {
-        console.log('listing all the notes')
+        notes.listNotes()
     }
 })
 
